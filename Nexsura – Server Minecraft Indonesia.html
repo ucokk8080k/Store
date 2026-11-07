@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nexsura – Server Minecraft Indonesia</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#04141f;--bg2:#082637;--sf:#0c3047;--bd:rgba(255,255,255,.1);--tx:#eaf8fb;--mut:#8fb3be;--lag:#19d3c5;--cor:#ff7a59;--sand:#ffe8b8;--on:#03221f;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f7f1e1;--bg2:#efe5c9;--sf:#fffaf0;--bd:rgba(8,38,55,.14);--tx:#0a2a3a;--mut:#4f6f78;--lag:#0b8f87;--cor:#e4562f;--sand:#0a2a3a;--on:#fff}}
+:root[data-theme="light"]{--bg:#f7f1e1;--bg2:#efe5c9;--sf:#fffaf0;--bd:rgba(8,38,55,.14);--tx:#0a2a3a;--mut:#4f6f78;--lag:#0b8f87;--cor:#e4562f;--sand:#0a2a3a;--on:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "DM Sans",system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;margin:0;letter-spacing:-.025em;line-height:1.05}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+a{color:inherit}
+/* navigasi */
+nav{position:sticky;top:10px;z-index:8;max-width:1040px;margin:10px auto 0;padding:0 14px}
+.bar{display:flex;align-items:center;gap:2px;padding:7px 8px 7px 16px;background:color-mix(in srgb,var(--bg) 78%,transparent);border:1px solid var(--bd);border-radius:999px;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.logo{font:800 20px "Bricolage Grotesque",sans-serif;margin-right:auto;color:var(--lag)}
+.bar a{text-decoration:none;color:var(--mut);font-weight:500;font-size:14px;padding:7px 12px;border-radius:999px}
+.bar a:hover{color:var(--tx);background:var(--sf)}
+.bar .wa{background:var(--lag);color:var(--on);font-weight:700;margin-left:4px}
+@media (max-width:560px){.bar a.hide{display:none}}
+/* hero */
+.hero{position:relative;padding:54px 0 40px;overflow:hidden}
+.hero h1{font-size:clamp(58px,17vw,150px);font-weight:800;line-height:.9;background:linear-gradient(95deg,var(--lag) 20%,var(--sand) 55%,var(--cor) 90%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:flow 8s ease-in-out infinite alternate}
+@keyframes flow{to{background-position:100% 0}}
+.hero p{max-width:44ch;font-size:19px;color:var(--mut);margin:18px 0 26px}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.ips{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;max-width:680px}
+.ip{background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:14px 16px}
+.ip small{color:var(--mut);font-weight:500}
+.ip b{display:block;font:700 18px "Bricolage Grotesque",sans-serif;word-break:break-all;margin:1px 0 8px}
+.scene{position:absolute;right:4%;top:70px;width:240px;height:240px;perspective:800px;opacity:.9;pointer-events:none}
+.cube{--s:90px;position:absolute;width:var(--s);height:var(--s);transform-style:preserve-3d;animation:spin 16s linear infinite,bob 5s ease-in-out infinite}
+.cube i{position:absolute;inset:0;border:2px solid rgba(255,255,255,.28);background:linear-gradient(135deg,var(--c1),var(--c2))}
+.cube i:nth-child(1){transform:translateZ(calc(var(--s)/2))}.cube i:nth-child(2){transform:rotateY(90deg) translateZ(calc(var(--s)/2))}.cube i:nth-child(3){transform:rotateY(180deg) translateZ(calc(var(--s)/2))}.cube i:nth-child(4){transform:rotateY(-90deg) translateZ(calc(var(--s)/2))}.cube i:nth-child(5){transform:rotateX(90deg) translateZ(calc(var(--s)/2))}.cube i:nth-child(6){transform:rotateX(-90deg) translateZ(calc(var(--s)/2))}
+.c1{--c1:#19d3c5;--c2:#0b6e83;left:20px;top:40px}
+.c2{--s:56px;--c1:#ff7a59;--c2:#b8412a;left:150px;top:0;animation-duration:11s,4s}
+.c3{--s:44px;--c1:#ffe8b8;--c2:#d9b46a;left:140px;top:150px;animation-duration:9s,6s}
+@keyframes spin{from{transform:rotateX(-24deg) rotateY(0)}to{transform:rotateX(-24deg) rotateY(360deg)}}
+@keyframes bob{50%{margin-top:-16px}}
+@media (max-width:700px){.scene{opacity:.28;right:-30px;top:40px}}
+/* tombol */
+.btn{position:relative;overflow:hidden;border:0;border-radius:14px;padding:13px 20px;font:700 15px "DM Sans",sans-serif;background:var(--lag);color:var(--on);cursor:pointer;text-decoration:none;display:inline-block;text-align:center;transition:transform .15s}
+.btn.alt{background:transparent;color:var(--tx);border:1.5px solid var(--bd)}
+.btn.cor{background:var(--cor);color:#fff}
+.btn:hover{filter:brightness(1.08)}.btn:active{transform:scale(.95)}
+.btn.sm{padding:9px 14px;font-size:14px;border-radius:11px}
+.rip{position:absolute;border-radius:50%;background:rgba(255,255,255,.55);transform:scale(0);animation:rip .65s ease-out forwards;pointer-events:none}
+@keyframes rip{to{transform:scale(4);opacity:0}}
+.btn.ok{animation:bump .4s ease}@keyframes bump{40%{transform:scale(1.12)}}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--sand);outline-offset:2px}
+/* marquee */
+.mq{border-block:1px solid var(--bd);background:var(--bg2);overflow:hidden;white-space:nowrap}
+.mq div{display:inline-block;padding:13px 0;animation:mq 30s linear infinite;font:700 17px "Bricolage Grotesque",sans-serif;color:var(--mut)}
+.mq span{margin:0 18px}.mq em{font-style:normal;color:var(--cor)}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* seksi */
+section{padding:56px 0 4px}
+h2{font-size:clamp(30px,7vw,48px);margin-bottom:8px}
+.sub{color:var(--mut);max-width:52ch;margin:0 0 22px}
+.tabs{display:inline-flex;gap:4px;padding:5px;background:var(--sf);border:1px solid var(--bd);border-radius:16px;margin-bottom:20px}
+.tabs button{border:0;background:none;color:var(--mut);font:700 15px "DM Sans",sans-serif;padding:10px 20px;border-radius:12px;cursor:pointer;transition:background .25s,color .25s}
+.tabs button[aria-selected="true"]{background:var(--lag);color:var(--on)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:12px}
+@media (min-width:640px){.grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}}
+.card{position:relative;background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:8px;overflow:hidden;transition:transform .25s,box-shadow .25s,border-color .25s;animation:in .45s cubic-bezier(.2,.8,.3,1) both;animation-delay:calc(var(--d,0)*60ms)}
+.card:before{content:"";position:absolute;right:-30px;top:-30px;width:90px;height:90px;border-radius:50%;background:var(--cc);opacity:.22;filter:blur(8px)}
+.card:hover{transform:translateY(-5px);border-color:var(--cc);box-shadow:0 16px 36px -16px var(--cc)}
+@keyframes in{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+.card h3{font-size:21px;color:var(--cc)}
+.st{color:var(--cc);letter-spacing:2px;font-size:13px}
+.card p{margin:0;color:var(--mut);font-size:14.5px}
+.price{margin-top:auto;font-weight:700;font-size:14px}
+.card .btn{width:100%;margin-top:4px}
+.note{margin-top:16px;padding:14px 18px;border-radius:16px;border:1px dashed var(--bd);color:var(--mut)}
+.note b{color:var(--sand)}
+/* fitur bento */
+.bento{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media (min-width:700px){.bento{grid-template-columns:repeat(4,1fr)}.bento .w2{grid-column:span 2}}
+.bx{background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:16px;transition:transform .25s,border-color .25s}
+.bx:hover{transform:translateY(-4px);border-color:var(--cc)}
+.bx .ic{display:grid;place-items:center;width:46px;height:46px;border-radius:14px;font-size:23px;margin-bottom:10px;background:color-mix(in srgb,var(--cc) 20%,transparent)}
+.bx h3{font-size:19px;margin-bottom:4px}
+.bx p{margin:0;color:var(--mut);font-size:14.5px}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}.rv.in{opacity:1;transform:none}
+/* join */
+.join{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.jc{background:var(--sf);border:1px solid var(--bd);border-radius:22px;padding:20px}
+.jc h3{font-size:24px;margin-bottom:12px}
+.row2{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-top:1px solid var(--bd)}
+.row2 span{color:var(--mut)}.row2 b{word-break:break-all;text-align:right}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;counter-reset:s}
+.steps div{counter-increment:s;background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:16px 18px;color:var(--mut)}
+.steps b{display:block;color:var(--tx);font:800 18px "Bricolage Grotesque",sans-serif;margin-bottom:2px}
+.steps b:before{content:counter(s);display:inline-grid;place-items:center;width:26px;height:26px;margin-right:8px;border-radius:8px;background:var(--cor);color:#fff;font-size:14px}
+footer{margin:56px 0 0;border-top:1px solid var(--bd);padding:26px 0 96px;color:var(--mut);font-size:14px}
+footer a{color:var(--lag)}
+/* tombol WA melayang */
+#fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:9;box-shadow:0 10px 28px -8px rgba(0,0,0,.5);padding:14px 20px;border-radius:999px}
+/* popup */
+#ov{position:fixed;inset:0;z-index:20;background:rgba(2,8,14,.7);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:none;align-items:flex-end;justify-content:center}
+#ov.on{display:flex;animation:fade .25s ease}@keyframes fade{from{opacity:0}}
+.sheet{width:100%;max-width:440px;background:var(--bg);border:1px solid var(--bd);border-radius:26px 26px 0 0;padding:24px 22px calc(24px + env(safe-area-inset-bottom,0px));animation:up .45s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes up{from{transform:translateY(80px) scale(.96);opacity:0}}
+@media (min-width:600px){#ov{align-items:center;padding:20px}.sheet{border-radius:26px}}
+.sheet h3{font-size:24px}.sheet p{color:var(--mut);margin:4px 0 14px}
+.num{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--sf);border:1px solid var(--bd);border-radius:16px;padding:14px 16px;animation:pop .5s .12s cubic-bezier(.2,.9,.3,1.3) both}
+@keyframes pop{from{opacity:0;transform:scale(.85)}}
+.num b{font:800 clamp(22px,6.5vw,28px) "Bricolage Grotesque",sans-serif}
+.sheet label{display:block;font-weight:700;font-size:14px;margin:14px 0 6px}
+.sheet input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--sf);color:var(--tx);font:16px "DM Sans",sans-serif}
+.row{display:flex;gap:10px;margin-top:16px}.row .btn{flex:1}
+#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:30;background:var(--tx);color:var(--bg);padding:10px 16px;border-radius:999px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav><div class="bar"><span class="logo">Nexsura</span><a href="#toko">Toko</a><a href="#fitur">Fitur</a><a href="#join" class="hide">Cara main</a><a href="#" class="wa" data-open="Barang di Nexsura">Beli</a></div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="scene" aria-hidden="true"><div class="cube c1"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="cube c2"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="cube c3"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+<h1>Nexsura</h1>
+<p>Server Minecraft Indonesia dengan ekonomi lengkap, kit rank, dan crate. Masuk gratis, belanja lewat admin.</p>
+<div class="cta"><a class="btn" href="#toko">Lihat toko</a><button class="btn alt" type="button" data-copy="play.nexsura.my.id:19198">Salin IP Java</button></div>
+<div class="ips">
+<div class="ip"><small>Java Edition</small><b>play.nexsura.my.id:19198</b><button class="btn sm alt" data-copy="play.nexsura.my.id:19198" type="button">Salin</button></div>
+<div class="ip"><small>Bedrock Edition (port 19311)</small><b>play.nexsura.my.id</b><button class="btn sm alt" data-copy="play.nexsura.my.id" type="button">Salin</button></div>
+</div></div></header>
+
+<div class="mq" aria-hidden="true"><div id="mq"></div></div>
+
+<main class="wrap">
+<section id="toko"><h2>Toko Nexsura</h2><p class="sub">Pilih barang, tekan Beli, lalu hubungi admin lewat WhatsApp.</p>
+<div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-t="Rank">Rank</button><button role="tab" aria-selected="false" data-t="Key">Key</button><button role="tab" aria-selected="false" data-t="Shard">Shard</button></div>
+<div class="grid" id="shop"></div>
+<div class="note" id="tnote"></div></section>
+
+<section id="fitur"><h2>Fitur server</h2><p class="sub">Semua yang bisa kamu lakukan di Nexsura.</p>
+<div class="bento" id="bento"></div></section>
+
+<section id="join"><h2>Cara main</h2><p class="sub">Tambah server di menu Multiplayer dengan data ini.</p>
+<div class="join">
+<div class="jc rv"><h3>Java</h3><div class="row2"><span>IP server</span><b>play.nexsura.my.id:19198</b></div></div>
+<div class="jc rv"><h3>Bedrock</h3><div class="row2"><span>Alamat</span><b>play.nexsura.my.id</b></div><div class="row2"><span>Port</span><b>19311</b></div></div>
+</div>
+<div class="steps" style="margin-top:14px">
+<div class="rv"><b>Tambah server</b>Buka Multiplayer lalu Tambah Server, isi IP server (Bedrock: alamat dan port).</div>
+<div class="rv"><b>Masuk dan main</b>Klaim kit, kumpulkan uang, buka crate.</div>
+<div class="rv"><b>Beli lewat admin</b>Tekan Beli di toko, nomor admin langsung muncul.</div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Nexsura Minecraft Server. Pembelian dan bantuan: <a id="waLink" href="#"></a></div></footer>
+<button class="btn cor" id="fab" type="button" data-open="Barang di Nexsura">Hubungi admin</button>
+
+<div id="ov" role="dialog" aria-modal="true" aria-labelledby="sh"><div class="sheet">
+<h3 id="sh">Beli</h3><p>Hubungi nomor admin ini untuk membeli.</p>
+<div class="num"><b id="numShow"></b><button class="btn sm alt" id="cpNum" type="button">Salin</button></div>
+<label for="nick">Nickname Minecraft (opsional)</label>
+<input id="nick" type="text" autocomplete="off" placeholder="Contoh: Steve123">
+<div class="row"><button class="btn alt" id="close" type="button">Tutup</button><a class="btn" id="go" href="#" target="_blank" rel="noopener">Buka WhatsApp</a></div>
+</div></div>
+<div id="toast" role="status"></div>
+
+<script>
+// Ubah data di sini untuk harga, paket, fitur, dan nomor.
+var WA="6285789185600",WA_SHOW="0857-8918-5600",WA_RAW="085789185600";
+var DATA={
+Rank:[
+ {n:"Premium",c:"#f2d98a",s:2,d:"Kit Premium, klaim ulang tiap 7 hari.",p:"Rp25.000"},
+ {n:"Coconut",c:"#f0a97c",s:3,d:"Kit Coconut, klaim ulang tiap 7 hari.",p:"Rp50.000"},
+ {n:"Turtle",c:"#a6e86b",s:4,d:"Kit Turtle, klaim ulang tiap 7 hari.",p:"Rp75.000"},
+ {n:"Ocean",c:"#5fd8f2",s:5,d:"Kit Ocean, klaim ulang tiap 7 hari.",p:"Rp100.000"},
+ {n:"Trader+",c:"#60a5fa",s:5,d:"Kit Trader+, klaim ulang tiap 7 hari.",p:"Rp150.000"},
+ {n:"Booster",c:"#f472b6",s:3,d:"Kit Booster, klaim ulang tiap 7 hari. Didapat lewat donasi.",p:"Donasi Rp200.000"}],
+Key:[
+ {n:"AFK Key",c:"#94a3b8",d:"Crate key AFK.",p:"Rp5.000"},
+ {n:"Common Key",c:"#a3e635",d:"Crate key Common.",p:"Rp10.000"},
+ {n:"Arcane Key",c:"#c084fc",d:"Crate key Arcane.",p:"Rp15.000"},
+ {n:"Matrix Key",c:"#34d399",d:"Crate key Matrix.",p:"Rp20.000"},
+ {n:"Monthly Key",c:"#fbbf24",d:"Crate key Monthly.",p:"Rp25.000"},
+ {n:"Special Key",c:"#f472b6",d:"Crate key Special.",p:"Rp30.000"}],
+Shard:[
+ {n:"100 Shard",c:"#c084fc",d:"Paket pemula.",p:"Rp10.000"},
+ {n:"500 Shard",c:"#818cf8",d:"Paket menengah.",p:"Rp45.000"},
+ {n:"1000 Shard",c:"#22d3ee",d:"Paket besar.",p:"Rp80.000"}]};
+var NOTES={Rank:"Rank <b>Booster</b> didapat dengan donasi Rp200.000.",Key:"Key dipakai untuk membuka crate di spawn.",Shard:"Shard ditukar dengan item spesial di Shard Shop."};
+var FX=[["\u{1F6D2}","Shop","Beli item dari toko server.","#22d3ee",""],["\u{1F4B0}","Sell Shop","Jual item hasil farming jadi uang.","#34d399",""],["\u{1F528}","AH","Lelang item ke pemain lain lewat Auction House.","#fbbf24","w2"],["\u{1F4E6}","Order","Pasang pesanan untuk item yang kamu cari.","#60a5fa",""],["\u{1F3AF}","Bounty","Pasang hadiah untuk pemain yang ingin kamu kalahkan.","#f87171",""],["\u{1FA99}","Coin Flip","Adu untung lempar koin melawan pemain lain.","#f472b6","w2"],["\u{1F4C8}","Invest","Investasikan uangmu dan dapat penghasilan per detik.","#a3e635",""],["\u{1F381}","Crates","Buka crate dengan key untuk hadiah acak.","#c084fc",""],["\u{1F48E}","Shard Shop","Tukar shard dengan item spesial.","#818cf8",""],["\u{1F91D}","Trade","Tukar item dengan pemain lain secara aman.","#2dd4bf",""],["\u{1F9ED}","RTP","Teleport acak ke lokasi baru di dunia.","#fb923c","w2"],["\u2728","Masih banyak lagi","Masuk ke server dan temukan fitur lainnya.","#94a3b8","w2"]];
+function esc(t){return String(t).replace(/[&<>"]/g,function(m){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]})}
+function stars(n){var s="";for(var i=0;i<5;i++)s+=i<n?"\u2605":"\u2606";return s}
+var tab="Rank";
+function shop(){
+ var h="";
+ DATA[tab].forEach(function(x,i){
+  h+='<div class="card" style="--cc:'+x.c+';--d:'+i+'"><h3>'+esc(x.n)+'</h3>'+(x.s?'<div class="st" aria-label="Rarity '+x.s+' dari 5">'+stars(x.s)+'</div>':'')+'<p>'+esc(x.d)+'</p><div class="price">'+(x.p?esc(x.p):'Harga: tanya admin')+'</div><button class="btn sm" type="button" data-buy="'+i+'">Beli</button></div>';
+ });
+ document.getElementById("shop").innerHTML=h;
+ document.getElementById("tnote").innerHTML=NOTES[tab];
+}
+shop();
+document.querySelector(".tabs").addEventListener("click",function(e){
+ var b=e.target.closest("button");if(!b)return;tab=b.dataset.t;
+ this.querySelectorAll("button").forEach(function(x){x.setAttribute("aria-selected",x===b)});shop();
+});
+document.getElementById("bento").innerHTML=FX.map(function(f){return '<div class="bx rv '+f[4]+'" style="--cc:'+f[3]+'"><div class="ic">'+f[0]+'</div><h3>'+esc(f[1])+'</h3><p>'+esc(f[2])+'</p></div>'}).join("");
+var mqh="";FX.slice(0,11).forEach(function(f){mqh+="<span>"+esc(f[1])+"</span><em>\u25C6</em>"});
+document.getElementById("mq").innerHTML=mqh+mqh+mqh+mqh;
+if("IntersectionObserver" in window){var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}})},{threshold:.15});document.querySelectorAll(".rv").forEach(function(el){io.observe(el)})}else{document.querySelectorAll(".rv").forEach(function(el){el.classList.add("in")})}
+var cur="",ov=document.getElementById("ov"),nick=document.getElementById("nick"),go=document.getElementById("go");
+document.getElementById("numShow").textContent=WA_SHOW;
+var wl=document.getElementById("waLink");wl.textContent=WA_SHOW;wl.href="https://wa.me/"+WA;
+function link(){var n=nick.value.trim();go.href="https://wa.me/"+WA+"?text="+encodeURIComponent("Halo admin Nexsura, saya mau beli "+cur+"."+(n?"\nNickname Minecraft: "+n:""))}
+function openSheet(name){cur=name;document.getElementById("sh").textContent="Beli "+name;link();ov.className="on"}
+function toast(t){var el=document.getElementById("toast");el.textContent=t;el.className="on";setTimeout(function(){el.className=""},1800)}
+function copy(t,m){try{navigator.clipboard.writeText(t).then(function(){toast(m)},function(){toast("Salin manual: "+t)})}catch(e){toast("Salin manual: "+t)}}
+document.addEventListener("click",function(e){
+ var t=e.target.closest(".btn");
+ if(t){var r=t.getBoundingClientRect(),d=Math.max(r.width,r.height),s=document.createElement("span");s.className="rip";s.style.cssText="width:"+d+"px;height:"+d+"px;left:"+(e.clientX-r.left-d/2)+"px;top:"+(e.clientY-r.top-d/2)+"px";t.appendChild(s);setTimeout(function(){s.remove()},700)}
+ var b=e.target.closest("[data-buy]");
+ if(b){openSheet(tab+" "+DATA[tab][b.dataset.buy].n);return}
+ var o=e.target.closest("[data-open]");
+ if(o){e.preventDefault();openSheet(o.dataset.open);return}
+ var c=e.target.closest("[data-copy]");
+ if(c){copy(c.dataset.copy,"IP disalin");return}
+ if(e.target===ov||e.target.id==="close")ov.className="";
+});
+document.getElementById("cpNum").addEventListener("click",function(){var el=this;copy(WA_RAW,"Nomor disalin");el.textContent="Tersalin";el.classList.add("ok");setTimeout(function(){el.textContent="Salin";el.classList.remove("ok")},1500)});
+nick.addEventListener("input",link);
+document.addEventListener("keydown",function(e){if(e.key==="Escape")ov.className=""});
+</script>
+</body>
+</html>
